@@ -33,7 +33,7 @@ YELLOW = (255, 255, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
-Player = spaceship()
+Player = spaceship(screen)
 screen.blit(Spaceship.image, Spaceship.postiton)
 
 play = True  # controls whether to keep playing

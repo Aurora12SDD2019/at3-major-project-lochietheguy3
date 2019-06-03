@@ -43,7 +43,25 @@ def function_name(arg1, arg2, other_silly_variable=None):
     pass
 
 
+class Player(object):
+    """ a space ship sprite
+    the main player sprite
+    
+    attributes:
+    image: the spaceship image
+    position: 
+"""
 
+    def __init__(self, pos=[0,0]):
+        self.image = P.image.load("media/spaceship.png").convert()
+        self.position = [0,0]
+
+
+    def public_method(self):
+        """Performs operation blah."""
+        
+        
+        
 class SampleClass(object):
     """Summary of class here.
 

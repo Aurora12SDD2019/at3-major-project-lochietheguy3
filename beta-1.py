@@ -108,7 +108,7 @@ def game_loop():
       
       if x > display_width - ship_width or x < 0:
           dead()
-      if y > display_height - ship_height or y < 0 + ship_height:
+      if y > display_height - ship_height - 10 or y < -25:
           dead()
       if thing_startx < display_width - 1500:
           thing_startx = 1100 - thing_width

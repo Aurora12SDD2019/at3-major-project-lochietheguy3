@@ -25,6 +25,12 @@ clock = pygame.time.Clock()
 
 shipImg = pygame.image.load('spaceship.png')
 
+
+def things_dodged(count):
+    font = pygame.font.SysFont(None, 25)
+    text = font.render("Score: " + str(count), True, white)
+    gameWindow.blit(text,(0,0))
+    
 def things(thingx, thingy, thingw, thingh, color):
     pygame.draw.rect(gameWindow, color, [thingx, thingy, thingw, thingh])
     
@@ -50,7 +56,7 @@ def message_display(text):
     
     
 def dead():
-    message_display('ded')
+    message_display('you failed: your score is '(count))
 
 def game_loop():
     x = (display_width * 0.05)
@@ -61,10 +67,11 @@ def game_loop():
     
     thing_starty = random.randrange(0, display_height)
     thing_startx = 1100
-    thing_speed = -3
+    thing_speed = -15
     thing_width = 140
     thing_height = 140
     
+    dodged = 0
     
     gameExit = False
     while not gameExit:
@@ -76,13 +83,13 @@ def game_loop():
         
         if event.type == pygame.KEYDOWN:
           if event.key == pygame.K_a:
-            x_change = -5
+            x_change = -4
           if event.key == pygame.K_d:
-            x_change = 5
+            x_change = 4
           if event.key == pygame.K_s:
-            y_change = 5
+            y_change = 4
           if event.key == pygame.K_w:
-            y_change = -5
+            y_change = -4
         
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_a or event.key ==pygame.K_d or event.key ==pygame.K_w or event.key ==pygame.K_s:
@@ -98,10 +105,10 @@ def game_loop():
       
       
       things(thing_startx, thing_starty, thing_width, thing_height, brown)
-      thing_startx += thing_speed
-      
-      
+      thing_startx += thing_speed 
       ship(x,y)
+      things_dodged(dodged)
+      
       
       xcross = 0
       ycross = 0 
@@ -112,7 +119,11 @@ def game_loop():
           dead()
       if thing_startx < display_width - 1500:
           thing_startx = 1100 - thing_width
-          thing_starty = random.randrange(0,display_height)
+          thing_starty = random.randrange(0,display_height - thing_height)
+          dodged += 1
+          thing_speed += -0.3
+          
+      
       
       if y > thing_starty and y < thing_starty + ship_height + 47 or y + ship_height > thing_starty and y < thing_starty + thing_height - ship_height:
             print('y crossover')

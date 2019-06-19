@@ -1,0 +1,10 @@
+controls -
+W - up
+A - left
+S - down
+D - right
+
+guide - 
+control your spaceship to avoid all the obstacles thrown at you, survive as long as you can,
+the points are based of time spent alive.
+
